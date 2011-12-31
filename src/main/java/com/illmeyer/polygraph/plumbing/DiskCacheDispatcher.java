@@ -1,33 +1,44 @@
 package com.illmeyer.polygraph.plumbing;
 
 import java.io.File;
+import java.io.PrintWriter;
+import java.util.Random;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import com.illmeyer.polygraph.core.MessageDispatcher;
 
-@Data
-
 public class DiskCacheDispatcher implements MessageDispatcher {
 
-	private File cacheDirectory; 
+	@Getter @Setter private File cacheDirectory; 
+
+	private Random r = new Random();
 	
 	@Override
 	public void dispatchMessage(String message) {
-		// TODO Auto-generated method stub
-
+		String filename=System.currentTimeMillis()+"-"+message.hashCode();
+		String addition="";
+		File targetFile;
+		do {
+			targetFile = new File(cacheDirectory,filename+addition);
+			addition="-"+r.nextInt();
+		} while (targetFile.exists());
+		try {
+			PrintWriter pw;
+			pw = new PrintWriter(targetFile, "UTF-8");
+			pw.print(message);
+			pw.close();
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
 	}
 
 	@Override
 	public void initialize() {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
 	public void destroy() {
-		// TODO Auto-generated method stub
-		
 	}
-
 }
