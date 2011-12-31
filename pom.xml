@@ -6,6 +6,13 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Polygraph basic I/O classes</name>
 	<description>Provides basic I/O functionality to the Polygraph Bulk Messaging System</description>
+	<repositories>
+		<repository>
+			<id>supercsv</id>
+			<name>supercsv</name>
+			<url>http://www.intalio.org/public/maven2/</url>
+		</repository>
+	</repositories>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
@@ -20,6 +27,13 @@
 			<artifactId>lombok</artifactId>
 			<version>0.10.1</version>
 			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.supercsv</groupId>
+			<artifactId>SuperCSV</artifactId>
+			<version>1.52</version>
+			<type>jar</type>
+			<scope>runtime</scope>
 		</dependency>
 	</dependencies>
 	<build>
