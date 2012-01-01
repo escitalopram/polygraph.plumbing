@@ -33,7 +33,6 @@
 			<artifactId>SuperCSV</artifactId>
 			<version>1.52</version>
 			<type>jar</type>
-			<scope>runtime</scope>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>

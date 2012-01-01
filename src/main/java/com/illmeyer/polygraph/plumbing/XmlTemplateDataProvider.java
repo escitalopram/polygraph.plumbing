@@ -1,14 +1,8 @@
 package com.illmeyer.polygraph.plumbing;
 
-import java.io.File;
-import java.io.IOException;
 import java.net.URL;
 
-import javax.xml.parsers.ParserConfigurationException;
-
 import org.xml.sax.InputSource;
-import org.xml.sax.SAXException;
-
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.Setter;
@@ -29,15 +23,8 @@ public class XmlTemplateDataProvider implements TemplateDataProvider{
 		try {
 			InputSource ins = new InputSource(xmlInput.openStream());
 			xmlModel = NodeModel.parse(ins);
-		} catch (SAXException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ParserConfigurationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} catch (Exception e) {
+			throw new RuntimeException(e);
 		}
 	}
 
@@ -48,7 +35,6 @@ public class XmlTemplateDataProvider implements TemplateDataProvider{
 
 	@Override
 	public void destroy() {
-		// TODO Auto-generated method stub
 	}
 
 }
