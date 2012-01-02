@@ -17,13 +17,19 @@ public class DiskCacheDispatcher implements MessageDispatcher {
 	
 	@Override
 	public void dispatchMessage(String message) {
-		String filename=System.currentTimeMillis()+"-"+message.hashCode();
+		StringBuilder fnString = new StringBuilder();
+		fnString.append(Long.toHexString(System.currentTimeMillis()))
+			.append('-')
+			.append(Integer.toHexString(message.hashCode()))
+			.append('-')
+			.append(Long.toHexString(r.nextLong()));
+		String filename=fnString.toString();
 		String addition="";
-		File targetFile;
-		do {
+		File targetFile = new File(cacheDirectory,filename);
+		while (targetFile.exists()) {
+			addition=Integer.toHexString(r.nextInt());
 			targetFile = new File(cacheDirectory,filename+addition);
-			addition="-"+r.nextInt();
-		} while (targetFile.exists());
+		} 
 		try {
 			PrintWriter pw;
 			pw = new PrintWriter(targetFile, "UTF-8");
