@@ -5,8 +5,8 @@ import lombok.Data;
 import java.util.List;
 import java.util.ArrayList;
 
-import com.illmeyer.polygraph.core.Address;
-import com.illmeyer.polygraph.core.AddressSupplier;
+import com.illmeyer.polygraph.core.data.Address;
+import com.illmeyer.polygraph.core.spi.AddressSupplier;
 
 @Data
 

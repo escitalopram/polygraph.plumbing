@@ -14,8 +14,8 @@ import java.util.Map.Entry;
 import org.supercsv.io.CsvMapReader;
 import org.supercsv.prefs.CsvPreference;
 
-import com.illmeyer.polygraph.core.Address;
-import com.illmeyer.polygraph.core.AddressSupplier;
+import com.illmeyer.polygraph.core.data.Address;
+import com.illmeyer.polygraph.core.spi.AddressSupplier;
 
 public class CsvAddressSupplier implements AddressSupplier {
 	

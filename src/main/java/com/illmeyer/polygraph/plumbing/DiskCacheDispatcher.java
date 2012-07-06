@@ -9,8 +9,8 @@ import java.util.Random;
 import lombok.Getter;
 import lombok.Setter;
 
-import com.illmeyer.polygraph.core.Message;
-import com.illmeyer.polygraph.core.MessageDispatcher;
+import com.illmeyer.polygraph.core.data.Message;
+import com.illmeyer.polygraph.core.spi.MessageDispatcher;
 
 public class DiskCacheDispatcher implements MessageDispatcher {
 

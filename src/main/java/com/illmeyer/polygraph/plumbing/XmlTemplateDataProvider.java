@@ -7,7 +7,7 @@ import lombok.AccessLevel;
 import lombok.Data;
 import lombok.Setter;
 
-import com.illmeyer.polygraph.core.TemplateDataProvider;
+import com.illmeyer.polygraph.core.spi.TemplateDataProvider;
 
 import freemarker.ext.dom.NodeModel;
 

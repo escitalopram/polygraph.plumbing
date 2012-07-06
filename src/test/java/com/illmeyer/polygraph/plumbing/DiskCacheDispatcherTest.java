@@ -5,8 +5,8 @@ import java.io.File;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import com.illmeyer.polygraph.core.Message;
-import com.illmeyer.polygraph.core.MessagePart;
+import com.illmeyer.polygraph.core.data.Message;
+import com.illmeyer.polygraph.core.data.MessagePart;
 
 // TODO: Find a better way to test this platform independently
 public class DiskCacheDispatcherTest {

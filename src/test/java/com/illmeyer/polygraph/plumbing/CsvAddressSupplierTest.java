@@ -7,7 +7,7 @@ import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import com.illmeyer.polygraph.core.Address;
+import com.illmeyer.polygraph.core.data.Address;
 
 // TODO: remove wackyness of relative, platform dependent URL
 @Ignore
