@@ -1,12 +1,15 @@
 package com.illmeyer.polygraph.plumbing;
 
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
 import java.util.Random;
 
 import lombok.Getter;
 import lombok.Setter;
 
+import com.illmeyer.polygraph.core.Message;
 import com.illmeyer.polygraph.core.MessageDispatcher;
 
 public class DiskCacheDispatcher implements MessageDispatcher {
@@ -16,7 +19,7 @@ public class DiskCacheDispatcher implements MessageDispatcher {
 	private Random r = new Random();
 	
 	@Override
-	public void dispatchMessage(String message) {
+	public void dispatchMessage(Message message) {
 		StringBuilder fnString = new StringBuilder();
 		fnString.append(Long.toHexString(System.currentTimeMillis()))
 			.append('-')
@@ -31,10 +34,10 @@ public class DiskCacheDispatcher implements MessageDispatcher {
 			targetFile = new File(cacheDirectory,filename+addition);
 		} 
 		try {
-			PrintWriter pw;
-			pw = new PrintWriter(targetFile, "UTF-8");
-			pw.print(message);
-			pw.close();
+			ObjectOutputStream ow;
+			ow = new ObjectOutputStream(new FileOutputStream(targetFile));
+			ow.writeObject(message);
+			ow.close();
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}

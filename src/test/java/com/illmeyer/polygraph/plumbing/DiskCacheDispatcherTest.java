@@ -5,16 +5,27 @@ import java.io.File;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import com.illmeyer.polygraph.core.Message;
+import com.illmeyer.polygraph.core.MessagePart;
+
 // TODO: Find a better way to test this platform independently
-@Ignore
 public class DiskCacheDispatcherTest {
 	@Test
 	public void testDispatcher() {
 		DiskCacheDispatcher dct = new DiskCacheDispatcher();
-		dct.setCacheDirectory(new File("/tmp/loldir/"));
+		dct.setCacheDirectory(new File(System.getProperty("java.io.tmpdir")));
 		dct.initialize();
-		dct.dispatchMessage("Dies ist ein Test");
-		dct.dispatchMessage("Das auch");
+		dct.dispatchMessage(getExampleMessage());
 		dct.destroy();
+	}
+	
+	private Message getExampleMessage() {
+		Message m = new Message("testmessage");
+		m.getProperties().put("test-prop", "test-value");
+		MessagePart mp = new MessagePart();
+		mp.getProperties().put("test-msg-prop", "test-value2");
+		mp.setStringMessage("Dies ist ein Test");
+		m.getParts().put("main", mp);
+		return m;
 	}
 }
