@@ -29,6 +29,7 @@ public class DiskCacheDispatcher implements MessageDispatcher {
 		String filename=fnString.toString();
 		String addition="";
 		File targetFile = new File(cacheDirectory,filename);
+		// TODO check for race conditions
 		while (targetFile.exists()) {
 			addition=Integer.toHexString(r.nextInt());
 			targetFile = new File(cacheDirectory,filename+addition);
