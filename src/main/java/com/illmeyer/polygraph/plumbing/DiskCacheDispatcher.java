@@ -3,7 +3,6 @@ package com.illmeyer.polygraph.plumbing;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
-import java.io.PrintWriter;
 import java.util.Random;
 
 import lombok.Getter;
